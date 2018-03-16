@@ -524,7 +524,9 @@ filter_tags() {
     # no tag filter
     if [ -z "${V1_TAG_FILTER}" ]; then
       # add each tag to list
-      FULL_IMAGE_LIST="${FULL_IMAGE_LIST} ${FULL_IMAGE_NAME}"
+      if [[ "$j" != *"SNAP"* ]]; then
+         FULL_IMAGE_LIST="${FULL_IMAGE_LIST} ${FULL_IMAGE_NAME}"
+      fi
     else
       # if tag filter, check for a match
       if [ "$j" == "${V1_TAG_FILTER}" ]; then
